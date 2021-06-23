@@ -1,0 +1,33 @@
+@import "colors.scss";
+
+button {
+  background-color: $aqua;
+  border: none;
+  margin-top: 12px;
+  padding: 0 32px;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  transition: filter 0.2s;
+
+  img {
+    margin-right: 8px;
+  }
+
+  &:not(:disabled):hover {
+    background-color: $hover_deepaqua;
+  }
+  &:disabled {
+    opacity: 0.6;
+    filter: saturate(0.2);
+    cursor: not-allowed;
+  }
+} 
