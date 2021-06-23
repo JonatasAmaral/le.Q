@@ -1,15 +1,9 @@
 import React from 'react';
-import { Button } from "./components/Button";
+import { Home } from './pages/Home';
 
 function App() {
   return (
-    <div>
-      <Button />
-      <Button label="Uma label diferente" />
-      <Button />
-      <Button />
-      <Button />
-    </div>
+    <Home />
   );
 }
 

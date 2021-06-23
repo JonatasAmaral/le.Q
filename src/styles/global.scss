@@ -1,0 +1,17 @@
+@import "colors.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: $dimmedblack;
+}
+
+
+body, input, button, textarea {
+  font: 400 16px 'Roboto', sans-serif;
+}
