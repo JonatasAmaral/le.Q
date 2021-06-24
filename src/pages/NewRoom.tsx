@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { AuthContext } from '../App';
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -6,7 +8,13 @@ import logoImg from "../assets/images/logo.svg";
 import "../styles/auth.scss";
 import { Button } from "../components/Button";
 
-export function NewRoom() {return (
+export function NewRoom() {
+  const {user, signInWithGoogle} = useContext(AuthContext);
+  const history = useHistory();
+
+  if (!user) history.push('/');
+  
+return (
   <div id="page-auth">
     <aside>
       <img
@@ -19,6 +27,8 @@ export function NewRoom() {return (
     <main>
       <div className="main-content">
         <img src={logoImg} alt="logo letmeask" />
+
+        <h1>{user?.name}</h1>
 
         <h2>Crie uma sala nova</h2>
 
