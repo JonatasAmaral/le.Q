@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { AuthContext } from '../App';
+import { AuthContext } from '../contexts/AuthContext';
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -9,9 +9,10 @@ import "../styles/auth.scss";
 import { Button } from "../components/Button";
 
 export function NewRoom() {
-  const {user, signInWithGoogle} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const history = useHistory();
 
+  // if (!user) signInWithGoogle();
   if (!user) history.push('/');
   
 return (
@@ -27,8 +28,6 @@ return (
     <main>
       <div className="main-content">
         <img src={logoImg} alt="logo letmeask" />
-
-        <h1>{user?.name}</h1>
 
         <h2>Crie uma sala nova</h2>
 
