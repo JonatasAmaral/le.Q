@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -9,7 +8,7 @@ import "../styles/auth.scss";
 import { Button } from "../components/Button";
 
 export function NewRoom() {
-  const {user} = useContext(AuthContext);
+  const {user} = useAuth();
   const history = useHistory();
 
   // if (!user) signInWithGoogle();
