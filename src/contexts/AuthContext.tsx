@@ -4,9 +4,9 @@ import { createContext } from "react";
 import { auth } from "../services/firebase";
 
 type User = {
-  id: String;
-  name: String;
-  avatar: String;
+  id: string;
+  name: string;
+  avatar: string;
 }
 type AuthContextType = {
   user: User | undefined;
