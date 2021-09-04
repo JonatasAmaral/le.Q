@@ -63,7 +63,23 @@
         align-items: center;
         margin-top: 16px;
 
-        span {
+        .user-info {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          }
+
+          span {
+            margin-left: 8px;
+            color: $dimmedblack;
+          }
+        }
+
+        > span {
           font-size: 14px;
           color: $gray-dark;
           font-weight: 500;
