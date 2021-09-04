@@ -1,3 +1,4 @@
+import { FormEvent, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
@@ -6,9 +7,26 @@ import logoImg from "../assets/images/logo.svg";
 
 import "../styles/auth.scss";
 import { Button } from "../components/Button";
+import { database } from '../services/firebase';
 
 export function NewRoom() {
   const {user} = useAuth();
+
+  const [roomName, setRoomName] = useState('');
+  
+  async function handleCreateRoom(event:FormEvent) {
+    event.preventDefault();
+    
+    if (roomName.trim() === '') return;
+    
+    const roomRef = database.ref('rooms');
+    
+    const firebaseRoom = await roomRef.push({
+      title: roomName,
+      authorId: user?.id,
+    })
+  }
+
   const history = useHistory();
 
   // if (!user) signInWithGoogle();
@@ -30,8 +48,13 @@ return (
 
         <h2>Crie uma sala nova</h2>
 
-        <form action="">
-          <input type="text" placeholder="Nome da sala" />
+        <form onSubmit={handleCreateRoom}>
+          <input
+            type="text"
+            placeholder="Nome da sala"
+            onChange={(e) => setRoomName(e.target.value)}
+            value={roomName}
+          />
           <Button type="submit">Criar sala</Button>
         </form>
 
@@ -39,7 +62,6 @@ return (
           Quer entrar em uma sala já existente?
           <Link to="/">Clique aqui</Link>
         </p>
-
       </div>
     </main>
   </div>
