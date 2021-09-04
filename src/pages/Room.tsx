@@ -1,7 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import  { useParams } from 'react-router-dom'
 
+import { database } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
+import { UserType } from '../contexts/AuthContext';
+
 import logoImg from "../assets/images/logo.svg";
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
@@ -10,11 +13,45 @@ import "../styles/room.scss";
 type RoomParams = {
   id: string
 }
+type QuestionType = {
+  content: string,
+  author: UserType,
+  isHighlighted: boolean,
+  isAnswered: boolean,
+}
+type ParsedQuestionType = {
+  id: string
+} & QuestionType
+
+type FireBaseQuestions = Record<string, QuestionType>
 
 export function Room() {
   const {user, signInWithGoogle} = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
+  const [questions, setQuestions] = useState<ParsedQuestionType[]>([])
+  const [title, setTitle] = useState('')
+
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomId}`);
+
+    roomRef.on('value',room=>{
+      const firebaseQuestions: FireBaseQuestions = room.val().questions ?? {}
+      const parsedQuestions:ParsedQuestionType[] = Object.entries(firebaseQuestions).map(
+        ([key, value]) => {
+          return {
+            ...value,
+            id: key
+          }
+        }
+      );
+
+      setTitle(room.val().title)
+      setQuestions(parsedQuestions);
+      
+    })
+  }, [roomId]);
+
   const [newQuestion, setNewQuestion] = useState('')
 
   async function handleSendQuestion(event: FormEvent) {
@@ -37,7 +74,7 @@ export function Room() {
     setNewQuestion('');
   }
 
-  const quantPerguntas = Math.floor(Math.random()*4);
+  const quantPerguntas = questions.length;
 
   return (
     <div id="page-room">
@@ -50,7 +87,7 @@ export function Room() {
 
       <main>
         <div className="room-title">
-          <h1>Sala: React</h1>
+          <h1>Sala: {title}</h1>
 
           {quantPerguntas > 0 && (
             <span>
