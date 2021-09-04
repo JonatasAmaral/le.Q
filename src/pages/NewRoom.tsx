@@ -11,6 +11,7 @@ import { database } from '../services/firebase';
 
 export function NewRoom() {
   const {user, signInWithGoogle} = useAuth();
+  const history = useHistory();
 
   const [roomName, setRoomName] = useState('');
 
@@ -26,6 +27,8 @@ export function NewRoom() {
       title: roomName,
       authorId: user?.id,
     })
+
+    history.push(`/room/${firebaseRoom.key}`)
   }
 
 return (
