@@ -4,6 +4,6 @@ import '../styles/button.scss';
 
 export function Button(props:ButtonHTMLAttributes<HTMLButtonElement>){
 	return(
-		<button {...props}></button>
+		<button className='button' {...props}></button>
 	);
 }
