@@ -25,6 +25,16 @@ export function Room() {
       alert('You must be logged in');
       throw new Error('You must be logged in');
     }
+
+    const question = {
+      content: newQuestion.trim(),
+      author: user,
+      isHighlighted: false,
+      isAnswered: false,
+    }
+
+    await database.ref(`rooms/${roomId}/questions`).push(question);
+    setNewQuestion('');
   }
 
   const quantPerguntas = Math.floor(Math.random()*4);
