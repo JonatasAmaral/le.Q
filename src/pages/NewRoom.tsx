@@ -10,28 +10,24 @@ import { Button } from "../components/Button";
 import { database } from '../services/firebase';
 
 export function NewRoom() {
-  const {user} = useAuth();
+  const {user, signInWithGoogle} = useAuth();
 
   const [roomName, setRoomName] = useState('');
-  
+
   async function handleCreateRoom(event:FormEvent) {
     event.preventDefault();
-    
+
     if (roomName.trim() === '') return;
-    
+    if (!user) await signInWithGoogle();
+
     const roomRef = database.ref('rooms');
-    
+
     const firebaseRoom = await roomRef.push({
       title: roomName,
       authorId: user?.id,
     })
   }
 
-  const history = useHistory();
-
-  // if (!user) signInWithGoogle();
-  if (!user) history.push('/');
-  
 return (
   <div id="page-auth">
     <aside>
