@@ -8,6 +8,7 @@ import { UserType } from '../contexts/AuthContext';
 import logoImg from "../assets/images/logo.svg";
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
+import { QuestionCard } from '../components/QuestionCard';
 import "../styles/room.scss";
 
 type RoomParams = {
@@ -19,7 +20,7 @@ type QuestionType = {
   isHighlighted: boolean,
   isAnswered: boolean,
 }
-type ParsedQuestionType = {
+export type ParsedQuestionType = {
   id: string
 } & QuestionType
 
@@ -122,6 +123,13 @@ export function Room() {
             </Button>
           </div>
         </form>
+      
+        <section className="questions-list">
+          {questions.map(question=>(
+            <QuestionCard {...question} key={question.id}/>
+          ))}
+          
+        </section>
       </main>
     </div>
   );
