@@ -1,4 +1,4 @@
-import { ParsedQuestionType } from '../pages/Room'
+import { ParsedQuestionType } from '../hooks/useRoom'
 import likeIcon from '../assets/images/like.svg'
 import "../styles/question-card.scss";
 
