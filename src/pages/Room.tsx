@@ -122,13 +122,17 @@ export function Room() {
             <QuestionCard key={question.id} {...question}>
               <span className={`action like ${question.likeId && "activated"}`}>
                 {question.likeCount>0 && <span>{question.likeCount}</span>}
-                <button type="button" aria-label="like" onClick={()=>handleLikeQuestion(question.id, question.likeId)}>
+                <button
+                  disabled={!user}
+                  type="button"
+                  aria-label="like"
+                  onClick={()=>handleLikeQuestion(question.id, question.likeId)}
+                >
                   <SVG src={likeIcon}/>
                 </button>
               </span>
             </QuestionCard>
           ))}
-          
         </section>
       </main>
     </div>

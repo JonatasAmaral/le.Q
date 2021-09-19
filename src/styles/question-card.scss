@@ -68,6 +68,11 @@
           &:hover svg {
             filter: brightness(0.7)
           }
+
+          &:disabled {
+            pointer-events: none;
+            opacity: .5;
+          }
         }
 
         &.activated svg {
