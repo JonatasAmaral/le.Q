@@ -2,6 +2,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
 import { database } from '../services/firebase';
+import { useAuth } from '../hooks/useAuth';
 import { useRoom } from "../hooks/useRoom";
 
 import logoImg from "../assets/images/logo.svg";
@@ -21,6 +22,7 @@ type RoomParams = {
 
 export function AdminRoom() {
   const history = useHistory();
+  const { user } = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const roomRef = database.ref(`rooms/${roomId}`).get();
@@ -32,6 +34,9 @@ export function AdminRoom() {
   roomRef.then( data=>{    
     if(data.val().closedAt){
       history.push(`/`)
+    }
+    else if(data.val().authorId !== user?.id) {
+      history.push(`/room/${roomId}`)
     }
   }).catch(err=>console.log(err));
 
