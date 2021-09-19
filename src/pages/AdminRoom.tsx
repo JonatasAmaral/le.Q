@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
+import { database } from '../services/firebase';
 import { useRoom } from "../hooks/useRoom";
 
 import logoImg from "../assets/images/logo.svg";
@@ -25,6 +26,17 @@ export function AdminRoom() {
   const {questions, title} = useRoom(roomId);
 
   const quantPerguntas = questions.length;
+
+  async function handleDeleteQuestion(questionId: string) {
+    // TODO: use modal confirmation
+    if (
+      window.confirm("Tem certeza que deseja excluir essa pergunta?")
+    ){
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}`)
+        .remove();
+    }
+  }
 
   return (
     <div id="page-room">
@@ -63,7 +75,11 @@ export function AdminRoom() {
                 </button>
               </span>
               <span className="action delete">
-                <button type="button" aria-label="deletar pergunta">
+                <button
+                  type="button"
+                  aria-label="deletar pergunta"
+                  onClick={()=>{handleDeleteQuestion(question.id)}}
+                >
                   <SVG src={deleteIcon}/>
                 </button>
               </span>

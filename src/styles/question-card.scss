@@ -65,13 +65,18 @@
             max-height: 24px;
           }
 
-          &:hover {
-            filter: brightness(0.7);
+          &:hover svg {
+            filter: brightness(0.7)
           }
         }
 
         &.activated svg {
           stroke: $aqua;
+        }
+
+        &.delete:hover svg {
+          filter: none;
+          stroke: $danger;
         }
       }
 
