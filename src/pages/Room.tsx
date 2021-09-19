@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import  { useParams } from 'react-router-dom'
+import  { useHistory, useParams } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
 import { database } from '../services/firebase';
@@ -18,12 +18,21 @@ type RoomParams = {
 }
 
 export function Room() {
+  const history = useHistory();
   const {user, signInWithGoogle} = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
+  const roomRef = database.ref(`rooms/${roomId}`).get();
 
   const [newQuestion, setNewQuestion] = useState('')
   const {questions, title} = useRoom(roomId);
+
+  roomRef.then( data=>{
+    if(data.val().closedAt) {
+      history.push("/")
+      return
+    }
+  }).catch(err=>console.log(err));
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();

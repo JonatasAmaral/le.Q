@@ -23,10 +23,17 @@ export function AdminRoom() {
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
+  const roomRef = database.ref(`rooms/${roomId}`).get();
 
   const {questions, title} = useRoom(roomId);
 
   const quantPerguntas = questions.length;
+
+  roomRef.then( data=>{    
+    if(data.val().closedAt){
+      history.push(`/`)
+    }
+  }).catch(err=>console.log(err));
 
   async function handleEndRoom() {
     if (
