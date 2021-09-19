@@ -45,6 +45,20 @@ export function Room() {
     setNewQuestion('');
   }
 
+  async function handleLikeQuestion(questionId:string, likeId: string | undefined) {
+    if (likeId) {
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+        .remove();
+    } else {
+      await database
+        .ref(`rooms/${roomId}/questions/${questionId}/likes`)
+        .push({
+          authorId: user?.id,
+        });
+    }
+  }
+
   const quantPerguntas = questions.length;
 
   return (
@@ -97,9 +111,9 @@ export function Room() {
         <section className="questions-list">
           {questions.map(question=>(
             <QuestionCard key={question.id} {...question}>
-              <span className="action like">
-                <span>0</span>
-                <button type="button" aria-label="like">
+              <span className={`action like ${question.likeId && "activated"}`}>
+                {question.likeCount>0 && <span>{question.likeCount}</span>}
+                <button type="button" aria-label="like" onClick={()=>handleLikeQuestion(question.id, question.likeId)}>
                   <SVG src={likeIcon}/>
                 </button>
               </span>
