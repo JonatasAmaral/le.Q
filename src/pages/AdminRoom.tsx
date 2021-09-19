@@ -1,47 +1,28 @@
-import { FormEvent, useState } from 'react';
-import  { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import SVG from 'react-inlinesvg'
 
-import { database } from '../services/firebase';
-import { useAuth } from '../hooks/useAuth';
 import { useRoom } from "../hooks/useRoom";
 
 import logoImg from "../assets/images/logo.svg";
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
 import { QuestionCard } from '../components/QuestionCard';
+
 import "../styles/room.scss";
+
+import checkIcon from '../assets/images/check.svg'
+import answerIcon from '../assets/images/answer.svg'
+import deleteIcon from '../assets/images/delete.svg'
 
 type RoomParams = {
   id: string
 }
 
 export function AdminRoom() {
-  const {user, signInWithGoogle} = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
-  const [newQuestion, setNewQuestion] = useState('')
   const {questions, title} = useRoom(roomId);
-
-  async function handleSendQuestion(event: FormEvent) {
-    event.preventDefault();
-    
-    if (newQuestion.trim() === '') return;
-    if (!user) {
-      alert('You must be logged in');
-      throw new Error('You must be logged in');
-    }
-
-    const question = {
-      content: newQuestion.trim(),
-      author: user,
-      isHighlighted: false,
-      isAnswered: false,
-    }
-
-    await database.ref(`rooms/${roomId}/questions`).push(question);
-    setNewQuestion('');
-  }
 
   const quantPerguntas = questions.length;
 
@@ -70,9 +51,24 @@ export function AdminRoom() {
 
         <section className="questions-list">
           {questions.map(question=>(
-            <QuestionCard {...question} key={question.id} admin/>
+            <QuestionCard key={question.id} {...question}>
+              <span className="action check">
+                <button type="button" aria-label="marcar como respondida">
+                  <SVG src={checkIcon}/>
+                </button>
+              </span>
+              <span className="action answer">
+                <button type="button" aria-label="marcar como respondendo">
+                  <SVG src={answerIcon}/>
+                </button>
+              </span>
+              <span className="action delete">
+                <button type="button" aria-label="deletar pergunta">
+                  <SVG src={deleteIcon}/>
+                </button>
+              </span>
+            </QuestionCard>
           ))}
-          
         </section>
       </main>
     </div>

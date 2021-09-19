@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
 import  { useParams } from 'react-router-dom'
+import SVG from 'react-inlinesvg'
 
 import { database } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
 import { useRoom } from "../hooks/useRoom";
 
 import logoImg from "../assets/images/logo.svg";
+import likeIcon from '../assets/images/like.svg'
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
 import { QuestionCard } from '../components/QuestionCard';
@@ -94,7 +96,14 @@ export function Room() {
       
         <section className="questions-list">
           {questions.map(question=>(
-            <QuestionCard {...question} key={question.id}/>
+            <QuestionCard key={question.id} {...question}>
+              <span className="action like">
+                <span>0</span>
+                <button type="button" aria-label="like">
+                  <SVG src={likeIcon}/>
+                </button>
+              </span>
+            </QuestionCard>
           ))}
           
         </section>
