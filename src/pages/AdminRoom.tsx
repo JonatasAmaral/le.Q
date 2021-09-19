@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
 import { database } from '../services/firebase';
@@ -20,12 +20,25 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
+  const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
   const {questions, title} = useRoom(roomId);
 
   const quantPerguntas = questions.length;
+
+  async function handleEndRoom() {
+    if (
+      window.confirm("Tem certeza que deseja encerrar esta sala?")
+    ){
+      await database.ref(`rooms/${roomId}`).update({
+        closedAt: new Date(),
+      })
+    }
+
+    history.push("/")
+  }
 
   async function handleDeleteQuestion(questionId: string) {
     // TODO: use modal confirmation
@@ -45,7 +58,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="" />
           <div>
             <RoomCode roomCode={roomId} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button onClick={handleEndRoom} isOutlined>Encerrar sala</Button>
           </div>
         </div>
       </header>
