@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
 import { database } from '../services/firebase';
@@ -87,7 +87,7 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="" />
+          <Link to="/" aria-label="ir para home"><img src={logoImg} alt="" /></Link>
           <div>
             <RoomCode roomCode={roomId} />
             <Button onClick={handleEndRoom} isOutlined>Encerrar sala</Button>
