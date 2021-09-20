@@ -11,21 +11,40 @@
   cursor: pointer;
 
   align-items: stretch;
-
+  transition: border .2s;
+  
   div {
     background: $aqua;
     padding: 0 12px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color .2s;
   }
-
-  span {
+  
+  > span {
     display: block;
     align-self: center;
     flex: 1;
     padding: 0 16px 0 12px;
     font-size: 14px;
     font-weight: 500;
+  }
+  
+  .code-text {
+    transition: color .2s
+  }
+
+  &:hover {
+    border-color: $hover_deepaqua;
+    
+    div {
+      background: $hover_deepaqua;
+    }
+
+    .code-text {
+      color: $hover_deepaqua;
+      text-decoration: underline;
+    }
   }
 }

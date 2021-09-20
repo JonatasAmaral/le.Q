@@ -10,6 +10,7 @@ export function RoomCode( {roomCode}: RoomCodeProps) {
 
   function copyRoomCodeToClipboard(){
     navigator.clipboard.writeText(roomCode)
+    alert("Código da sala copiado!")
   }
   return (
     <button
@@ -19,7 +20,10 @@ export function RoomCode( {roomCode}: RoomCodeProps) {
       <div>
         <img src={copyimg} alt="Copiar código da sala" />
       </div>
-      <span><i style={{opacity: 0.5}}>Sala #</i>{roomCode}</span>
+      <span>
+        <i style={{opacity: 0.5}}>Sala #</i>
+        <span className="code-text">{roomCode}</span>
+      </span>
     </button>
   );
 }
