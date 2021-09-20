@@ -36,7 +36,7 @@ export function AdminRoom() {
       history.push(`/`)
     }
     else if(data.val().authorId !== user?.id) {
-      history.push(`/room/${roomId}`)
+      // history.push(`/room/${roomId}`)
     }
   }).catch(err=>console.log(err));
 
