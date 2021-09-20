@@ -16,6 +16,7 @@ import likeIcon from '../assets/images/like.svg'
 import checkIcon from '../assets/images/check.svg'
 import answerIcon from '../assets/images/answer.svg'
 import deleteIcon from '../assets/images/delete.svg'
+import emptyQuestionsIcon from '../assets/images/empty-questions.svg'
 
 type RoomParams = {
   id: string
@@ -106,7 +107,8 @@ export function AdminRoom() {
         </div>
 
         <section className="questions-list">
-          {questions.map(question=>(
+        {quantPerguntas>0? (
+          questions.map(question=>(
             <QuestionCard key={question.id} {...question}>
               {question.likeCount>0 && (
                 <span className='action like'>
@@ -150,7 +152,14 @@ export function AdminRoom() {
                 </button>
               </span>
             </QuestionCard>
-          ))}
+          ))
+        ):(
+          <div className="no-questions">
+            <img src={emptyQuestionsIcon} alt="icones de mensagem" />
+            <h3>Nenhuma pergunta por aqui</h3>
+            <p>Compartilhe o código desta sala, e comece a receber perguntas!</p>
+          </div>
+        )}
         </section>
       </main>
     </div>

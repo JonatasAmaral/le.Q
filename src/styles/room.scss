@@ -109,6 +109,20 @@
 
     .questions-list {
       margin-top: 32px;
+
+      .no-questions {
+        margin: 16px auto;
+        max-width: 300px;
+        text-align: center;
+
+        h3 {
+          font: 700 18px "Poppins", sans-serif;
+          margin: 16px 0 8px;
+        }
+        p{
+          font-size: 14px;
+        }
+      }
     }
   }
 }

@@ -8,6 +8,8 @@ import { useRoom } from "../hooks/useRoom";
 
 import logoImg from "../assets/images/logo.svg";
 import likeIcon from '../assets/images/like.svg'
+import emptyQuestionsIcon from '../assets/images/empty-questions.svg'
+
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
 import { QuestionCard } from '../components/QuestionCard';
@@ -118,21 +120,29 @@ export function Room() {
         </form>
       
         <section className="questions-list">
-          {questions.map(question=>(
-            <QuestionCard key={question.id} {...question}>
-              <span className={`action like ${question.likeId && "activated"}`}>
-                {question.likeCount>0 && <span>{question.likeCount}</span>}
-                <button
-                  disabled={!user || question.isAnswered}
-                  type="button"
-                  aria-label="like"
-                  onClick={()=>handleLikeQuestion(question.id, question.likeId)}
-                >
-                  <SVG src={likeIcon}/>
-                </button>
-              </span>
-            </QuestionCard>
-          ))}
+          { quantPerguntas>0 ? (
+            questions.map(question=>(
+              <QuestionCard key={question.id} {...question}>
+                <span className={`action like ${question.likeId && "activated"}`}>
+                  {question.likeCount>0 && <span>{question.likeCount}</span>}
+                  <button
+                    disabled={!user || question.isAnswered}
+                    type="button"
+                    aria-label="like"
+                    onClick={()=>handleLikeQuestion(question.id, question.likeId)}
+                  >
+                    <SVG src={likeIcon}/>
+                  </button>
+                </span>
+              </QuestionCard>
+            ))
+          ):(
+            <div className="no-questions">
+              <img src={emptyQuestionsIcon} alt="icones de mensagem" />
+              <h3>Nenhuma pergunta por aqui</h3>
+              <p>Compartilhe o código desta sala, e veja algumas novas perguntas!</p>
+            </div>
+          )}
         </section>
       </main>
     </div>
