@@ -1,46 +1,161 @@
-# Getting Started with Create React App
+<p align="center">
+ <a href="#what">What is it</a> •
+ <a href="#technologies">Technologies</a> • 
+ <a href="#using">Using</a> • 
+ <a href="#building">Build yours</a> • 
+ <a href="#author">Author</a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+ <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/dev/typescript?logo=typescript" />
+ <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/react?logo=react" />
+ <span style="border-left: 3px solid #555; margin-right: 2px;"></span>
+ <img src="https://img.shields.io/github/package-json/v/JonatasAmaral/le.Q?logo=" />
+ <img src="https://img.shields.io/github/license/JonatasAmaral/le.Q?_" />
 
-## Available Scripts
+</p>
 
-In the project directory, you can run:
 
-### `yarn start`
+<!-- 
+![](https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>?style=<STYLE>&logo=<LOGO>&logoColor=red) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h1 align="center">
+    Typescript React app:
+    <p><b>le.Q</b></p>
+</h1>
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A webapp for collecting questions for answer live. Created in the [NLW#6](https://nextlevelweek.com/) event.
 
-### `yarn build`
+![App banner](./public/assets/home-page.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2 id="what"> What is it </h2>
 
-### `yarn eject`
+A React app developed in a online event [NLW#6](https://nextlevelweek.com/) (Next Level Week, 6th edition), by the online programming school [Rocketseat](https://rocketseat.com.br/).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What does it do?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* this
+  + this
+* and that
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+You can check it running over [here](https://le.Q.vercel.app/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### What you will find in it
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* this
+  + this
+* and that
+
+
+<h2 id="using" > Using it </h2>
+
+The most recent state of this project is automatically build to [Vercel](vercel.com) and [Firebase](firebase.com) too.
+
+You can run it at:
+
+[https://le.Q.vercel.app/](https://le.Q.vercel.app/)
+[https://le.Q.firebase.com/](https://le.Q.firebase.com/)
+
+
+<h2 id="technologies"> Used Technologies </h2>
+
+### This project has the following dependencies
+
+production
+- [ReactJS](https://reactjs.org)
+- [Sass](https://sass-lang.com)
+
+development
+- [typescript](https://www.typescriptlang.org/)
+- [NodeJS](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com) or [Npm](https://npmjs.com)
+
+### Toolset usage
+
+* Extensive use of React's State and Context APIs
+* Using Effect APIs too.
+* Creation of custom Hooks.
+* Scss (Sass) for advanced styling.
+* A colors "library" scss file.
+* Css Flexbox.
+* Svg icons as image and inline for dynamics.
+
+
+<h2 id="building" > Make yourself one of these </h2>
+
+### On github.dev
+
+The fastest to see the code, is making use of new [github.dev](https://github.dev), that allow open a github repo on VS code in the browser.
+
+Just hit `.` (dot) on this repo, and it's done.
+
+Or you can also edit the url, to change github.**com** to github.**dev**
+
+https://github.dev/JonatasAmaral/le.Q.git
+
+
+It can't run the app though. There is no terminal.
+### On Gitpod
+
+The easy way to get your dev enviroment runing it, is clone this repo to a cointainer in the cloud.
+If you already have an account:
+
+[![open in gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/JonatasAmaral/le.Q.git)
+
+### On your local machine
+
+To do it locally, you need to install git and NodeJS. I'm using yarn to build, though you can use npm.
+
+```bash
+# Clone this repo
+$ git clone https://github.com/JonatasAmaral/le.Q.git
+
+# Open folder (rename it before, if you want to)
+$ cd le.Q
+
+# Install/update the dependencies
+$ yarn
+
+# Or, for npm
+$ npm install
+
+# Get local API up in one terminal (make sure to set baseURL in /src/services/api.ts to htts://localhost:3000 for that to work)
+$ yarn server
+
+# Run app in a separate terminal
+$ yarn dev
+
+# Or
+$ npm dev
+
+# Access localhost
+http://localhost:3000
+```
+
+<br />
+<h2 id="author"> About the author </h2>
+
+Thank's and credits to [Diego Fernandes](https://github.com/diego3g) and his team at [Rocketseat](https://rocketseat.com.br/).
+
+<img style="border-radius: 50%; border: 2px solid #ccc; float: left; margin: 1rem 2rem .5rem 1rem" src="https://github.com/JonatasAmaral.png" width="100px;" alt=""/>
+
+### Jonatas Amaral
+
+[![Linkedin Badge](https://img.shields.io/badge/JonatasAmaral-blue?style=flat-round&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/jonatasamaral/)](https://www.linkedin.com/in/anabrtorres/)
+[![Gmail Badge](https://img.shields.io/badge/-jonatasamaral-171717?style=flat-round&logo=artstation&link=https://www.artstation.com/jonatasamaral)](https://www.artstation.com/jonatasamaral)
+
+[![Gmail Badge](https://img.shields.io/badge/-jonatasamaral.pro@gmail.com-c14438?style=flat-round&logo=Gmail&logoColor=white&link=mailto:jonatasamaral.pro@gmail.com)](mailto:anabrtorres19@gmail.com)
+
+<p style="white-space: nowrap">Designer, Computer Engeneering student.<p>
+<br style="clear: both; margin-top: 1rem" />
+
+<h2 id="license"> License </h2>
+
+This project is under the [MIT license](https://opensource.org/licenses/MIT).
