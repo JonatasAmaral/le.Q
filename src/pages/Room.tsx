@@ -1,3 +1,4 @@
+import { FormEvent, KeyboardEvent, useState } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom'
 import SVG from 'react-inlinesvg'
 
@@ -73,6 +74,14 @@ export function Room() {
     }
   }
 
+  function checkCTRLSubmit(event:KeyboardEvent) {
+    if (event.ctrlKey && event.key === 'Enter'){
+      
+      handleSendQuestion(event)
+      
+    }
+  }
+
   const quantPerguntas = questions.length;
 
   return (
@@ -101,6 +110,7 @@ export function Room() {
             onChange={(e) => setNewQuestion(e.target.value)}
             value={newQuestion}
             disabled={!user}
+            onKeyDown={checkCTRLSubmit}
           ></textarea>
 
           <div className="form-footer">
