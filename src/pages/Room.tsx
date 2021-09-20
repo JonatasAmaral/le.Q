@@ -34,7 +34,7 @@ export function Room() {
       history.push("/")
       return
     }
-    if(data.val().authorId == user?.id){
+    if(data.val().authorId === user?.id){
       history.push(`/admin/room/${roomId}`)
       return
     }

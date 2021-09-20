@@ -45,7 +45,7 @@ A React app developed in a online event [NLW#6](https://nextlevelweek.com/) (Nex
 * and that
 
 
-You can check it running over [here](https://le.Q.vercel.app/)
+You can check it running over [here](https://le-q.vercel.app/)
 
 ### What you will find in it
 
@@ -60,7 +60,7 @@ The most recent state of this project is automatically build to [Vercel](vercel.
 
 You can run it at:
 
-[https://le.Q.vercel.app/](https://le.Q.vercel.app/)
+[https://le-q.vercel.app/](https://le-q.vercel.app/)
 [https://le.Q.firebase.com/](https://le.Q.firebase.com/)
 
 
