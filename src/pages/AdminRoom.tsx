@@ -12,6 +12,7 @@ import { QuestionCard } from '../components/QuestionCard';
 
 import "../styles/room.scss";
 
+import likeIcon from '../assets/images/like.svg'
 import checkIcon from '../assets/images/check.svg'
 import answerIcon from '../assets/images/answer.svg'
 import deleteIcon from '../assets/images/delete.svg'
@@ -107,6 +108,18 @@ export function AdminRoom() {
         <section className="questions-list">
           {questions.map(question=>(
             <QuestionCard key={question.id} {...question}>
+              {question.likeCount>0 && (
+                <span className='action like'>
+                  <span>{question.likeCount}</span>
+                  <button
+                    disabled
+                    type="button"
+                    aria-label="like"
+                  >
+                    <SVG src={likeIcon}/>
+                  </button>
+                </span>
+              )}
               <span className={`action check ${question.isAnswered && 'activated' }`}>
                 <button
                   type="button"
