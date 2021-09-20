@@ -6,12 +6,30 @@
  <a href="#author">Author</a>
 </p>
 
+
 <p align="center">
- <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/dev/typescript?logo=typescript" />
+
+  <a href="https://le-q-736db.firebaseapp.com/">
+    <img src="https://img.shields.io/github/deployments/JonatasAmaral/le.Q/Production?label=firebase&logo=firebase" />
+  </a>
+  <a href="https://le-q.vercel.app/">
+    <img src="https://img.shields.io/github/deployments/JonatasAmaral/le.Q/Production?label=Vercel&logo=vercel" />
+  </a>
+  <a href="https://le-q.herokuapp.com/">
+    <img src="https://heroku-badge.herokuapp.com/?logo=heroku&app=le-q&svg=1" />
+  </a>
+  <a href="https://le-q.netlify.app/">
+    <img src="https://api.netlify.com/api/v1/badges/2279e641-3103-4387-90ed-81a7b9e5e4d8/deploy-status" alt="Netlify Status" />
+  </a>
+</p>
+
+<p align="center">
  <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/react?logo=react" />
- <span style="border-left: 3px solid #555; margin-right: 2px;"></span>
+ <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/typescript?logo=typescript" />
+ <img src="https://img.shields.io/github/package-json/dependency-version/JonatasAmaral/le.Q/firebase?logo=firebase&color=gold" />
+ <span> • </span>
  <img src="https://img.shields.io/github/package-json/v/JonatasAmaral/le.Q?logo=" />
- <img src="https://img.shields.io/github/license/JonatasAmaral/le.Q?_" />
+ <img src="https://img.shields.io/github/license/JonatasAmaral/le.Q" />
 
 </p>
 
@@ -28,8 +46,7 @@
 
 A webapp for collecting questions for answer live. Created in the [NLW#6](https://nextlevelweek.com/) event.
 
-![App banner](./public/assets/home-page.jpg)
-
+![banner](https://user-images.githubusercontent.com/8677724/134059698-cea5b16e-360c-4911-80c2-5cddd5ade9c6.png)
 
 
 <h2 id="what"> What is it </h2>
@@ -40,42 +57,92 @@ A React app developed in a online event [NLW#6](https://nextlevelweek.com/) (Nex
 
 ### What does it do?
 
-* this
-  + this
-* and that
+* _Large (desktop) size layout only_
+
+* Create rooms by authenticating with Google
+* Access rooms by it's code
+* View room freely
+  - Copy room code on button
+  - See all existent questions
+  - questions highlights
+
+  - questions like count
+* Authenticaded user actions
+  - Like other's not open questions
+
+  - _Can't like your own questions_
+* Room admin actions
+  - Highlight one question at time
+    + highlighting is a toggle action. Can undo
+
+    + highlighting one, un-highlight the rest
+
+  - Mark question as answered, closing it
+    + definite action, can not be reopened
+
+    + closing un-highlight question and disables this button
+  - See question's like count
+    + Can not like'm though
+
+  - Delete any question. Then it's gone for good
+
+  - _Don't have access to rooms you create as a user view_
+  - _So can't ask questions to your self'_
+
+  - Close rooms
+    + Not more access to room with it's code
+    + Rooms is not recoverable by user
 
 
-You can check it running over [here](https://le-q.vercel.app/)
+
+You can check it running over [here](https://le-q-736db.web.app/)
 
 ### What you will find in it
 
-* this
-  + this
-* and that
+* Loging with other methods
+  + Github
+  + Apple
+  + Microsoft
+  + Phone
+  + Passwordless email
+* Responsiveness
+* Unlogin/change account
+* Direct share link option
+* Dark theme
+* Scroll all clients to the just highlighted question
+* Allow installing as PWA
 
 
 <h2 id="using" > Using it </h2>
 
 The most recent state of this project is automatically build to [Vercel](vercel.com) and [Firebase](firebase.com) too.
 
-You can run it at:
+You can run it at any of those:
 
-[https://le-q.vercel.app/](https://le-q.vercel.app/)
-[https://le.Q.firebase.com/](https://le.Q.firebase.com/)
+* [https://le-q-736db.firebaseapp.com/]()
+
+* [https://le-q.vercel.app/]()
+
+* [https://le-q.herokuapp.com/]()
+
+* [https://le-q.netlify.com/]()
 
 
-<h2 id="technologies"> Used Technologies </h2>
+<h2 id="technologies"> Integrated Technologies </h2>
 
 ### This project has the following dependencies
 
 production
 - [ReactJS](https://reactjs.org)
 - [Sass](https://sass-lang.com)
+- [Firebase](https://www.npmjs.com/package/firebase)
+- [react-inlinesvg](https://www.npmjs.com/package/react-inlinesvg)
 
 development
-- [typescript](https://www.typescriptlang.org/)
+- [Typescript](https://www.typescriptlang.org/)
 - [NodeJS](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com) or [Npm](https://npmjs.com)
+- [classnames](https://www.npmjs.com/package/classnames)
 
 ### Toolset usage
 
