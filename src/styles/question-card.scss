@@ -10,6 +10,15 @@
   flex-direction: column;
   border: 1px solid #ebebeb;
 
+  &.highlighted {
+    background-image: linear-gradient( -10deg, rgba($blue, .13) 20%, rgba($blue, .05) 80% );
+    border-color: $aqua;
+    
+    .question-card-footer .author-info span{
+      color: $dimmedblack;
+    }
+  }
+
   &.answered {
     background-color: $gray-light;
     img {

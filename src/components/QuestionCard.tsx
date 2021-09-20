@@ -14,12 +14,14 @@ export function QuestionCard({
   content,
   author,
   isAnswered = false,
+  isHighlighted = false,
   children,
 }: QuestionCardProps) {
   return (
     <div
       className={classnames("question-card", {
         answered: isAnswered,
+        highlighted: isHighlighted && !isAnswered,
       })}
     >
       <p>{content}</p>

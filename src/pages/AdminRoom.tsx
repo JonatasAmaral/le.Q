@@ -59,6 +59,17 @@ export function AdminRoom() {
         isHighlighted: false,
       });
   }
+  async function highlightQuestion(questionId: string, isHighlighted: boolean) {
+    if (!isHighlighted){
+      (await database.ref(`rooms/${roomId}/questions`).get())
+        .forEach(q=>{
+          q.ref.update({isHighlighted: false})
+        })
+    }
+    await database
+      .ref(`rooms/${roomId}/questions/${questionId}`)
+      .update({isHighlighted: !isHighlighted});
+  }
   async function handleDeleteQuestion(questionId: string) {
     // TODO: use modal confirmation
     if (
@@ -106,11 +117,16 @@ export function AdminRoom() {
                   <SVG src={checkIcon}/>
                 </button>
               </span>
-              <span className="action answer">
-                <button type="button" aria-label="marcar como respondendo">
-                  <SVG src={answerIcon}/>
-                </button>
-              </span>
+                <span className={`action highlight ${question.isHighlighted && 'activated' }`}>
+                  <button
+                    type="button"
+                    aria-label={`Destacar pergunta${question.isAnswered ? '. desabilitado': ''}`}
+                    onClick={()=>{highlightQuestion(question.id, question.isHighlighted)}}
+                    disabled={question.isAnswered}
+                  >
+                    <SVG src={answerIcon}/>
+                  </button>
+                </span>
               <span className="action delete">
                 <button
                   type="button"
