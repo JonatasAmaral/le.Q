@@ -51,7 +51,14 @@ export function AdminRoom() {
 
     history.push("/")
   }
-
+  async function checkQuestionAnswered(questionId: string) {
+    await database
+      .ref(`rooms/${roomId}/questions/${questionId}`)
+      .update({
+        isAnswered: true,
+        isHighlighted: false,
+      });
+  }
   async function handleDeleteQuestion(questionId: string) {
     // TODO: use modal confirmation
     if (
@@ -89,8 +96,13 @@ export function AdminRoom() {
         <section className="questions-list">
           {questions.map(question=>(
             <QuestionCard key={question.id} {...question}>
-              <span className="action check">
-                <button type="button" aria-label="marcar como respondida">
+              <span className={`action check ${question.isAnswered && 'activated' }`}>
+                <button
+                  type="button"
+                  aria-label="Marcar como respondida"
+                  onClick={()=>{checkQuestionAnswered(question.id)}}
+                  disabled={question.isAnswered}
+                >
                   <SVG src={checkIcon}/>
                 </button>
               </span>

@@ -10,6 +10,13 @@
   flex-direction: column;
   border: 1px solid #ebebeb;
 
+  &.answered {
+    background-color: $gray-light;
+    img {
+      filter: saturate(0.25)
+    }
+  }
+
   p {
     color: $dimmedblack;
   }
@@ -71,7 +78,7 @@
 
           &:disabled {
             pointer-events: none;
-            opacity: .5;
+            opacity: .75;
           }
         }
 

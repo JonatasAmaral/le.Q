@@ -123,7 +123,7 @@ export function Room() {
               <span className={`action like ${question.likeId && "activated"}`}>
                 {question.likeCount>0 && <span>{question.likeCount}</span>}
                 <button
-                  disabled={!user}
+                  disabled={!user || question.isAnswered}
                   type="button"
                   aria-label="like"
                   onClick={()=>handleLikeQuestion(question.id, question.likeId)}
