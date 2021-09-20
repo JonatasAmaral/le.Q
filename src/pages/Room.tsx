@@ -97,6 +97,7 @@ export function Room() {
             placeholder="O que quer perguntar?"
             onChange={(e) => setNewQuestion(e.target.value)}
             value={newQuestion}
+            disabled={!user}
           ></textarea>
 
           <div className="form-footer">
